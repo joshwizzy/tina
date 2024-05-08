@@ -13,12 +13,12 @@ const config = defineConfig({
     : new UsernamePasswordAuthJSProvider(),
   build: {
     outputFolder: "admin",
-    publicFolder: "_site",
+    publicFolder: "static",
   },
   media: {
     tina: {
       mediaRoot: "",
-      publicFolder: "public",
+      publicFolder: "static",
     },
   },
   schema: {
