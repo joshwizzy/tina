@@ -1,12 +1,15 @@
 {
   "name": "hugoplate",
+  "private": true,
   "description": "hugo tailwindcss boilerplate",
   "version": "1.14.0",
   "license": "MIT",
   "author": "zeon.studio",
   "scripts": {
-    "dev": "hugo server",
-    "build": "hugo --gc --minify --templateMetrics --templateMetricsHints --forceSyncStatic",
+    "dev": "TINA_PUBLIC_IS_LOCAL=true tinacms dev -c \"hugo server -D -p $PORT\"",
+    "dev:prod": "TINA_PUBLIC_IS_LOCAL=false tinacms dev -c \"hugo server -D -p $PORT\"",
+    "build": "tinacms build --verbose && eleventy --input='site'",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "hugo server --disableFastRender --navigateToChanged --templateMetrics --templateMetricsHints --watch --forceSyncStatic -e production --minify",
     "dev:example": "cd exampleSite; hugo server",
     "build:example": "cd exampleSite; hugo --gc --minify --templateMetrics --templateMetricsHints --forceSyncStatic",
@@ -23,6 +26,7 @@
     "@tailwindcss/typography": "^0.5.13",
     "@tinacms/cli": "^1.5.45",
     "@types/node": "^20.12.11",
+    "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
@@ -33,6 +37,17 @@
     "tailwindcss": "^3.4.3"
   },
   "dependencies": {
-    "tinacms": "^1.6.3"
+    "@tinacms/datalayer": "^1.2.34",
+    "@vercel/kv": "^1.0.1",
+    "@vercel/node": "^3.1.0",
+    "mongodb-level": "^0.0.4",
+    "next-auth": "^4.24.7",
+    "nodemailer": "^6.9.13",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tinacms": "^1.6.3",
+    "tinacms-authjs": "^2.0.3",
+    "tinacms-gitprovider-github": "^1.0.5",
+    "upstash-redis-level": "^1.1.1"
   }
 }
