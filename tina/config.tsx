@@ -27,7 +27,7 @@ const config = defineConfig({
       {
         name: "post",
         label: "Posts",
-        path: "content/posts",
+        path: "content/blog",
         fields: [
           {
             type: "string",
